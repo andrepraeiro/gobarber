@@ -27,10 +27,10 @@ class Database {
    * docker run --name mongobarber -p 27017:27017 -d -t mongo
    */
   mongo() {
-    this.mongoConnection = mongoose.connect(
-      process.env.MONGO_URL
-      { useNewUrlParser: true, useFindAndModify: true }
-    );
+    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useFindAndModify: true,
+    });
   }
 }
 
