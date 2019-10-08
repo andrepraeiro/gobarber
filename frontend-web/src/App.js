@@ -1,7 +1,9 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import history from './services/history';
 
+import './config/reactotronConfig';
+
+import history from './services/history';
 import Routes from './routes';
 
 function App() {
