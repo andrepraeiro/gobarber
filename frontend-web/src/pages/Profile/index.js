@@ -13,6 +13,7 @@ export default function Profiles() {
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
+    console.tron.log('data', data);
     dispatch(updateProfileRequest(data));
   }
 
