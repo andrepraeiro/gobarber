@@ -1,3 +1,5 @@
+import { typeSignOut } from './types';
+
 export function signInRequest(email, password) {
   return {
     type: '@auth/SIGN_IN_REQUEST',
@@ -19,5 +21,11 @@ export function signUpRequest(name, email, password) {
 export function signFailure() {
   return {
     type: '@auth/SIGN_IN_FAILURE',
+  };
+}
+
+export function signOut() {
+  return {
+    type: typeSignOut,
   };
 }

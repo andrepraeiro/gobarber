@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { typeSignOut } from '~/store/modules/auth/types';
 
 const INITIAL_VALUE = {
   profile: null,
@@ -14,6 +15,11 @@ export default function user(state = INITIAL_VALUE, action) {
 
       case '@user/UPDATE_PROFILE_SUCCESSS': {
         draft.profile = action.payload;
+        break;
+      }
+
+      case typeSignOut: {
+        draft.profile = null;
         break;
       }
 

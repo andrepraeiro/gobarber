@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { typeSignOut } from './types';
 
 const INITIAL_VALUE = {
   token: null,
@@ -22,6 +23,11 @@ export default function auth(state = INITIAL_VALUE, action) {
       }
       case '@auth/SIGN_IN_FAILURE': {
         draft.loading = false;
+        break;
+      }
+      case typeSignOut: {
+        draft.token = null;
+        draft.signed = false;
         break;
       }
       default:
