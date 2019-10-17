@@ -33,8 +33,8 @@ export default function Dashboard() {
       const response = await api.get('schedule', {
         params: { date },
       });
-      console.tron.log('a');
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
       const data = range.map(hour => {
         const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
         const compareDate = utcToZonedTime(checkDate, timezone);
@@ -44,12 +44,14 @@ export default function Dashboard() {
           appointment: response.data.find(a =>
             isEqual(parseISO(a.date), compareDate)
           ),
+          compareDate,
+          appointments: response.data,
         };
       });
       setSchedule(data);
+      console.tron.log(data);
     }
     loadSchedule();
-    console.tron.log(schedule);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
@@ -76,7 +78,7 @@ export default function Dashboard() {
           <Time key={time.time} past={time.past} available={!time.appointment}>
             <strong>{time.time}</strong>
             <span>
-              {time.appointment ? time.appointment.use.name : 'Em aberto'}
+              {time.appointment ? time.appointment.user.name : 'Em aberto'}
             </span>
           </Time>
         ))}
